@@ -5,8 +5,6 @@
 
 vim.cmd [[set relativenumber]]
 
-vim.diagnostic.config { virtual_text = false }
-
 vim.keymap.set('n', '<silent> <C-g>', '')
 vim.keymap.set('n', ';', ':', { desc = 'Enter command mode' })
 vim.keymap.set('i', '<C-v>', '<C-r>+', { silent = true, desc = 'Paste from system clipboard' })
@@ -14,7 +12,7 @@ vim.keymap.set('n', '<C-g>', '<cmd>Telescope buffers<CR>', { silent = true, desc
 vim.keymap.set('n', '<C-e>', function()
   vim.diagnostic.open_float { scope = 'line' }
 end, { desc = 'Show line diagnostics' })
-vim.keymap.set('n', '<leader>/', '<cmd>Telescope live_grep<CR>', { silent = true, desc = 'Live grep' })
+vim.keymap.set('n', '<leader>/', ':RG<cr>', { silent = true, desc = 'Live grep' })
 vim.keymap.set('n', '<C-o>', '<cmd>Telescope lsp_document_symbols<CR>', {
   silent = true,
   desc = 'Search document symbols',
@@ -113,5 +111,12 @@ return {
   {
     'folke/tokyonight.nvim',
     enabled = false,
+  },
+  {
+    'junegunn/fzf',
+    build = ':call fzf#install()',
+  },
+  {
+    'junegunn/fzf.vim',
   },
 }
