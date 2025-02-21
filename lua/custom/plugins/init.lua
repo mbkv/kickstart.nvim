@@ -4,6 +4,7 @@
 -- See the kickstart.nvim README for more information
 
 vim.cmd [[set relativenumber]]
+vim.cmd [[set expandtab]]
 
 vim.keymap.set('n', '<silent> <C-g>', '')
 vim.keymap.set('n', ';', ':', { desc = 'Enter command mode' })
