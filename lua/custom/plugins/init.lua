@@ -37,6 +37,8 @@ vim.api.nvim_create_autocmd('FileType', {
     'typescript',
     'javascriptreact',
     'typescriptreact',
+    'html',
+    'css',
   },
   callback = function()
     vim.opt_local.shiftwidth = 2
@@ -128,6 +130,9 @@ return {
   },
   {
     'tpope/vim-fugitive',
+  },
+  {
+    'tpope/vim-abolish',
   },
   {
     'luochen1990/rainbow',
