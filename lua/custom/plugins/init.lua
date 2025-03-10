@@ -47,63 +47,63 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'VimEnter' }, {
-  callback = function()
-    vim.cmd [[ Neotree filesystem reveal ]]
-  end,
-})
+-- vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+--   callback = function()
+--     vim.cmd [[ Neotree filesystem reveal ]]
+--   end,
+-- })
 
-local is_revealing = false
-vim.api.nvim_create_autocmd({ 'TabNewEntered' }, {
-  callback = function()
-    if is_revealing then
-      return
-    end
-
-    if vim.bo.filetype ~= 'neo-tree' and vim.bo.buftype == '' and vim.fn.filereadable(vim.fn.expand '%:p') == 1 then
-      is_revealing = true
-      vim.defer_fn(function()
-        vim.cmd [[ Neotree filesystem reveal ]]
-        vim.cmd.wincmd 'p'
-        vim.defer_fn(function()
-          is_revealing = false
-        end, 10)
-      end, 10)
-    end
-  end,
-})
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-  callback = function()
-    if is_revealing then
-      return
-    end
-
-    -- Check if neo-tree buffer exists in any window
-    local has_neotree = false
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-      local buf = vim.api.nvim_win_get_buf(win)
-      if vim.bo[buf].filetype == 'neo-tree' then
-        has_neotree = true
-        break
-      end
-    end
-
-    if not has_neotree then
-      return
-    end
-
-    if vim.bo.filetype ~= 'neo-tree' and vim.bo.buftype == '' and vim.fn.filereadable(vim.fn.expand '%:p') == 1 then
-      is_revealing = true
-      vim.defer_fn(function()
-        vim.cmd [[ Neotree filesystem reveal ]]
-        vim.cmd.wincmd 'p'
-        vim.defer_fn(function()
-          is_revealing = false
-        end, 10)
-      end, 10)
-    end
-  end,
-})
+-- local is_revealing = false
+-- vim.api.nvim_create_autocmd({ 'TabNewEntered' }, {
+--   callback = function()
+--     if is_revealing then
+--       return
+--     end
+--
+--     if vim.bo.filetype ~= 'neo-tree' and vim.bo.buftype == '' and vim.fn.filereadable(vim.fn.expand '%:p') == 1 then
+--       is_revealing = true
+--       vim.defer_fn(function()
+--         vim.cmd [[ Neotree filesystem reveal ]]
+--         vim.cmd.wincmd 'p'
+--         vim.defer_fn(function()
+--           is_revealing = false
+--         end, 10)
+--       end, 10)
+--     end
+--   end,
+-- })
+-- vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+--   callback = function()
+--     if is_revealing then
+--       return
+--     end
+--
+--     -- Check if neo-tree buffer exists in any window
+--     local has_neotree = false
+--     for _, win in ipairs(vim.api.nvim_list_wins()) do
+--       local buf = vim.api.nvim_win_get_buf(win)
+--       if vim.bo[buf].filetype == 'neo-tree' then
+--         has_neotree = true
+--         break
+--       end
+--     end
+--
+--     if not has_neotree then
+--       return
+--     end
+--
+--     if vim.bo.filetype ~= 'neo-tree' and vim.bo.buftype == '' and vim.fn.filereadable(vim.fn.expand '%:p') == 1 then
+--       is_revealing = true
+--       vim.defer_fn(function()
+--         vim.cmd [[ Neotree filesystem reveal ]]
+--         vim.cmd.wincmd 'p'
+--         vim.defer_fn(function()
+--           is_revealing = false
+--         end, 10)
+--       end, 10)
+--     end
+--   end,
+-- })
 
 return {
   {
@@ -156,5 +156,8 @@ return {
   },
   {
     'junegunn/fzf.vim',
+  },
+  {
+    'yochem/jq-playground.nvim',
   },
 }
