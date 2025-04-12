@@ -9,7 +9,7 @@ vim.cmd [[set expandtab]]
 vim.keymap.set('n', '<silent> <C-g>', '')
 vim.keymap.set('n', ';', ':', { desc = 'Enter command mode' })
 vim.keymap.set('i', '<C-v>', '<C-r>+', { silent = true, desc = 'Paste from system clipboard' })
-vim.keymap.set('n', '<C-g>', '<cmd>Telescope oldfiles<CR>', { silent = true, desc = 'List buffers' })
+vim.keymap.set('n', '<C-g>', '<cmd>Buffers<CR>', { silent = true, desc = 'List buffers' })
 vim.keymap.set('n', '<C-e>', function()
   vim.diagnostic.open_float { scope = 'line' }
 end, { desc = 'Show line diagnostics' })
