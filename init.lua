@@ -349,7 +349,6 @@ require('lazy').setup({
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -661,7 +660,9 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        -- ts_ls = {},
+        -- ts_ls = { enabled = false },
+        tsgo = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -745,6 +746,11 @@ require('lazy').setup({
           lsp_format = lsp_format_opt,
         }
       end,
+      formatters = {
+        prettier = {
+          command = '/opt/homebrew/bin/prettier',
+        },
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
@@ -753,6 +759,7 @@ require('lazy').setup({
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
 
+        python = { 'black' },
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         javascriptreact = { 'prettier' },
