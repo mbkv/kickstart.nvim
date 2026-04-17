@@ -663,6 +663,7 @@ require('lazy').setup({
         -- ts_ls = {},
         -- ts_ls = { enabled = false },
         tsgo = {},
+        shellcheck = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -767,6 +768,7 @@ require('lazy').setup({
         html = { 'prettier' },
         css = { 'prettier' },
         c = { 'clang-format' },
+        cpp = { 'clang-format' },
       },
     },
   },
