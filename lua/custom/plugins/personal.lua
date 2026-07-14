@@ -20,6 +20,7 @@ vim.keymap.set('n', '<leader><C-o>', '<cmd>Telescope lsp_dynamic_workspace_symbo
   silent = true,
   desc = 'Search workspace symbols',
 })
+vim.keymap.set('n', '<C-p>', '<cmd>GFiles<CR>', { silent = true, desc = 'Search git files' })
 
 vim.keymap.set('n', '<C-s>', '<cmd>update<CR>')
 vim.keymap.set('v', '<C-s>', '<C-C><cmd>update<CR>')
